@@ -1,0 +1,50 @@
+<!--For the boiler plate, "!", and press tab key-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Mansa: X-bar Chart</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    </head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="container mx-auto p-4 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center mb-8">X-bar Control Chart Generator</h1>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-xl mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="num-samples" class="block text-gray-300 text-sm font-bold mb-2">Number of Samples:</label>
+                    <input type="number" id="num-samples" value="25" min="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-600">
+                </div>
+                <div>
+                    <label for="measurements-per-sample" class="block text-gray-300 text-sm font-bold mb-2">Measurements per Sample:</label>
+                    <input type="number" id="measurements-per-sample" value="5" min="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-600">
+                </div>
+            </div>
+            <button id="generate-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline">Generate Chart</button>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-xl mb-8 text-center text-lg">
+            <p id="overall-mean" class="mb-2">Overall Mean (CL): -</p>
+            <p id="mean-range" class="mb-2">Mean Range: -</p>
+            <p id="ucl" class="mb-2">UCL: -</p>
+            <p id="lcl">LCL: -</p>
+        </div>
+
+        <div class="w-full max-w-4xl bg-gray-800 rounded-lg shadow-xl p-6 mb-8" style="height: 500px;"> <h2 class="text-xl font-semibold mb-4 text-center">X-bar Control Chart</h2>
+            <div style="position: relative; height: calc(100% - 2rem); margin: auto;"> <canvas id="xbarChart"></canvas>
+            </div>
+        </div>
+
+    </div> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="{{ url_for('static', filename='js/dynamic.js') }}"></script>
+
+    </body>
+</html>
